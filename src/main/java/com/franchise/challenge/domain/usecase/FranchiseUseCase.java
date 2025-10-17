@@ -52,6 +52,18 @@ public class FranchiseUseCase implements FranchiseServicePort {
     }
 
     @Override
+    public Mono<Franchise> renameBranch(String id, String oldName, String newName) {
+        return franchisePersistencePort.findById(id)
+                .switchIfEmpty(Mono.error(new IllegalArgumentException(Constants.ERR_FRANCHISE_NOT_FOUND)))
+                .flatMap(fr -> Flux.fromIterable(fr.getBranches())
+                        .filter(b -> b.getName().equalsIgnoreCase(oldName))
+                        .singleOrEmpty()
+                        .switchIfEmpty(Mono.error(new IllegalArgumentException(Constants.ERR_BRANCH_NOT_FOUND)))
+                        .map(b -> { b.setName(newName); return fr; }))
+                .flatMap(franchisePersistencePort::save);
+    }
+
+    @Override
     public Mono<Franchise> addProduct(String id, String branchName, String productName, int stock) {
         return Mono.just(stock)
                 .filter(s -> s >= 0)
@@ -69,6 +81,63 @@ public class FranchiseUseCase implements FranchiseServicePort {
                             branch.getProducts().add(Product.builder().name(productName).stock(stock).build());
                             return fr;
                         }))
+                .flatMap(franchisePersistencePort::save);
+    }
+
+    @Override
+    public Mono<Franchise> renameProduct(String id, String branchName, String oldName, String newName) {
+        return franchisePersistencePort.findById(id)
+                .switchIfEmpty(Mono.error(new IllegalArgumentException(Constants.ERR_FRANCHISE_NOT_FOUND)))
+                .flatMap(fr -> Flux.fromIterable(fr.getBranches())
+                        .filter(b -> b.getName().equalsIgnoreCase(branchName))
+                        .singleOrEmpty()
+                        .switchIfEmpty(Mono.error(new IllegalArgumentException(Constants.ERR_BRANCH_NOT_FOUND)))
+                        .flatMap(b -> Flux.fromIterable(b.getProducts())
+                                .filter(p -> p.getName().equalsIgnoreCase(oldName))
+                                .singleOrEmpty()
+                                .switchIfEmpty(Mono.error(new IllegalArgumentException(Constants.ERR_PRODUCT_NOT_FOUND)))
+                                .map(p -> { p.setName(newName); return fr; })
+                        )
+                )
+                .flatMap(franchisePersistencePort::save);
+    }
+
+    @Override
+    public Mono<Franchise> updateStock(String id, String branchName, String productName, int stock) {
+        return Mono.just(stock)
+                .filter(s -> s >= 0)
+                .switchIfEmpty(Mono.error(new IllegalArgumentException(Constants.ERR_STOCK_INVALID)))
+                .then(franchisePersistencePort.findById(id))
+                .switchIfEmpty(Mono.error(new IllegalArgumentException(Constants.ERR_FRANCHISE_NOT_FOUND)))
+                .flatMap(fr -> Flux.fromIterable(fr.getBranches())
+                        .filter(b -> b.getName().equalsIgnoreCase(branchName))
+                        .singleOrEmpty()
+                        .switchIfEmpty(Mono.error(new IllegalArgumentException(Constants.ERR_BRANCH_NOT_FOUND)))
+                        .flatMap(b -> Flux.fromIterable(b.getProducts())
+                                .filter(p -> p.getName().equalsIgnoreCase(productName))
+                                .singleOrEmpty()
+                                .switchIfEmpty(Mono.error(new IllegalArgumentException(Constants.ERR_PRODUCT_NOT_FOUND)))
+                                .map(p -> { p.setStock(stock); return fr; })
+                        )
+                )
+                .flatMap(franchisePersistencePort::save);
+    }
+
+    @Override
+    public Mono<Franchise> deleteProduct(String id, String branchName, String productName) {
+        return franchisePersistencePort.findById(id)
+                .switchIfEmpty(Mono.error(new IllegalArgumentException(Constants.ERR_FRANCHISE_NOT_FOUND)))
+                .flatMap(fr -> Flux.fromIterable(fr.getBranches())
+                        .filter(b -> b.getName().equalsIgnoreCase(branchName))
+                        .singleOrEmpty()
+                        .switchIfEmpty(Mono.error(new IllegalArgumentException(Constants.ERR_BRANCH_NOT_FOUND)))
+                        .flatMap(b -> Flux.fromIterable(b.getProducts())
+                                .filter(p -> p.getName().equalsIgnoreCase(productName))
+                                .singleOrEmpty()
+                                .switchIfEmpty(Mono.error(new IllegalArgumentException(Constants.ERR_PRODUCT_NOT_FOUND)))
+                                .map(p -> { b.getProducts().remove(p); return fr; })
+                        )
+                )
                 .flatMap(franchisePersistencePort::save);
     }
 
