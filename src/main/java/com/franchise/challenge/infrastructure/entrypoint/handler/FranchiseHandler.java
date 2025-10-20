@@ -56,7 +56,7 @@ public class FranchiseHandler {
         String oldName = req.pathVariable(ApiConstants.PATH_VAR_BRANCH);
         return req.bodyToMono(RenameRequest.class)
                 .flatMap(this::validate)
-                .flatMap(b -> service.rename(id, b.newName())) // si tu caso de uso es específico para branch, cambia aquí
+                .flatMap(b -> service.renameBranch(id, oldName, b.newName()))
                 .flatMap(fr -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValue(fr));
     }
 
