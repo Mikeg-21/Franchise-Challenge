@@ -88,7 +88,7 @@ Incluye pruebas para:
 
 ---
 
-## 📚 Endpoints Principales
+##  Endpoints Principales
 
 | Método | Endpoint | Descripción |
 |--------|-----------|-------------|
@@ -171,7 +171,7 @@ infrastructure/
 ##  Documentación Swagger
 
 La documentación de los endpoints está disponible en:  
-👉 [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+ [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
 ---
 
