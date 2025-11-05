@@ -14,6 +14,6 @@ public class Franchise {
 
     private String id;
     private String name;
-    @Builder.Default private List<Branch> branches = new ArrayList<>();
+    private List<Branch> branches = new ArrayList<>();
 
 }

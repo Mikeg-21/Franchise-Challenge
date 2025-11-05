@@ -1,7 +1,7 @@
-package com.franchise.challenge.infrastructure.entrypoint.mapper;
+package com.franchise.challenge.infraestructure.entrypoint.mapper;
 
 import com.franchise.challenge.domain.model.Franchise;
-import com.franchise.challenge.infrastructure.entrypoint.dto.FranchiseRequest;
+import com.franchise.challenge.infraestructure.entrypoint.dto.FranchiseRequest;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

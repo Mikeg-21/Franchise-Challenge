@@ -1,9 +1,9 @@
-package com.franchise.challenge.infrastructure.entrypoint.handler;
+package com.franchise.challenge.infraestructure.entrypoint.handler;
 
 import com.franchise.challenge.domain.api.FranchiseServicePort;
-import com.franchise.challenge.infrastructure.entrypoint.dto.*;
-import com.franchise.challenge.infrastructure.entrypoint.mapper.FranchiseDtoMapper;
-import com.franchise.challenge.infrastructure.entrypoint.util.ApiConstants;
+import com.franchise.challenge.infraestructure.entrypoint.dto.*;
+import com.franchise.challenge.infraestructure.entrypoint.mapper.FranchiseDtoMapper;
+import com.franchise.challenge.infraestructure.entrypoint.util.ApiConstants;
 import jakarta.validation.Validator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;

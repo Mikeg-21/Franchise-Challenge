@@ -1,4 +1,4 @@
-package com.franchise.challenge.infrastructure.entrypoint.util;
+package com.franchise.challenge.infraestructure.entrypoint.util;
 
 public final class ApiConstants {
     private ApiConstants(){}

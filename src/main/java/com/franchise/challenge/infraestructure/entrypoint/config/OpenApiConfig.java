@@ -1,4 +1,4 @@
-package com.franchise.challenge.infrastructure.entrypoint.config;
+package com.franchise.challenge.infraestructure.entrypoint.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;

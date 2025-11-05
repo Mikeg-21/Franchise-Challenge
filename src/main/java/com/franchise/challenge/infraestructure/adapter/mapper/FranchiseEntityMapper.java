@@ -1,11 +1,11 @@
-package com.franchise.challenge.infrastructure.adapter.mapper;
+package com.franchise.challenge.infraestructure.adapter.mapper;
 
 import com.franchise.challenge.domain.model.Branch;
 import com.franchise.challenge.domain.model.Franchise;
 import com.franchise.challenge.domain.model.Product;
-import com.franchise.challenge.infrastructure.adapter.entity.BranchEntity;
-import com.franchise.challenge.infrastructure.adapter.entity.FranchiseEntity;
-import com.franchise.challenge.infrastructure.adapter.entity.ProductEntity;
+import com.franchise.challenge.infraestructure.adapter.entity.BranchEntity;
+import com.franchise.challenge.infraestructure.adapter.entity.FranchiseEntity;
+import com.franchise.challenge.infraestructure.adapter.entity.ProductEntity;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

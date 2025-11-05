@@ -1,4 +1,4 @@
-package com.franchise.challenge.infrastructure.adapter.entity;
+package com.franchise.challenge.infraestructure.adapter.entity;
 
 import lombok.*;
 

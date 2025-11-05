@@ -1,9 +1,9 @@
-package com.franchise.challenge.infrastructure.adapter.persistence;
+package com.franchise.challenge.infraestructure.adapter.persistence;
 
 import com.franchise.challenge.domain.model.Franchise;
 import com.franchise.challenge.domain.spi.FranchisePersistencePort;
-import com.franchise.challenge.infrastructure.adapter.mapper.FranchiseEntityMapper;
-import com.franchise.challenge.infrastructure.adapter.repository.FranchiseRepository;
+import com.franchise.challenge.infraestructure.adapter.mapper.FranchiseEntityMapper;
+import com.franchise.challenge.infraestructure.adapter.repository.FranchiseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;

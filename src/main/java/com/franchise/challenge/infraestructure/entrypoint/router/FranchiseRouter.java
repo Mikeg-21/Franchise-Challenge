@@ -1,8 +1,7 @@
-package com.franchise.challenge.infrastructure.entrypoint.router;
+package com.franchise.challenge.infraestructure.entrypoint.router;
 
-import com.franchise.challenge.infrastructure.entrypoint.dto.*;
-import com.franchise.challenge.infrastructure.entrypoint.handler.FranchiseHandler;
-import com.franchise.challenge.infrastructure.entrypoint.util.ApiConstants;
+import com.franchise.challenge.infraestructure.entrypoint.handler.FranchiseHandler;
+import com.franchise.challenge.infraestructure.entrypoint.util.ApiConstants;
 import org.springdoc.core.annotations.RouterOperation;
 import org.springdoc.core.annotations.RouterOperations;
 import org.springframework.context.annotation.Bean;

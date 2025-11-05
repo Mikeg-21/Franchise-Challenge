@@ -1,6 +1,6 @@
-package com.franchise.challenge.infrastructure.adapter.repository;
+package com.franchise.challenge.infraestructure.adapter.repository;
 
-import com.franchise.challenge.infrastructure.adapter.entity.FranchiseEntity;
+import com.franchise.challenge.infraestructure.adapter.entity.FranchiseEntity;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import reactor.core.publisher.Mono;
 
